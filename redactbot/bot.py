@@ -28,7 +28,7 @@ from .config import Config, ConfigError
 
 
 class RedactBot(Plugin):
-    allowed_msgtypes: Tuple[MessageType, ...] = (MessageType.FILE,)
+    allowed_msgtypes: Tuple[MessageType, ...] = (MessageType.FILE, MessageType.IMAGE)
 
     @classmethod
     def get_config_class(cls) -> Type[BaseProxyConfig]:
@@ -63,5 +63,8 @@ class RedactBot(Plugin):
             await evt.reply(f"I am configured to redact your file {evt.content.body} but someone forgot to give me moderator power!")
             return
         await self.client.redact(evt.room_id, evt.event_id)
-        await evt.reply(f"I redacted your file {evt.content.body}. No files in here but {self.config['permitted_mime']}.")
+        exception_phrase = ''
+        if len(self.config["permitted_mime"]) > 0:
+            exception_phrase = f" except {self.config['permitted_mime']}"
+        await evt.reply(f"I redacted your file {evt.content.body}. No files in here{exception_phrase}.")
         return
