@@ -1,7 +1,11 @@
 # redactbot
 A [maubot](https://github.com/maubot/maubot) that responds to files being posted and redacts/warns all but a set of whitelisted mime types.
 
-i have forked this work from Sebastian Spaeth, original repository can be found here: https://gitlab.com/sspaeth/redactbot
+i have forked this work from Sebastian Spaeth, original repository can be found here: https://gitlab.com/sspaeth/redactbot.
+This repo is no longer being maintained, as this functionality has mostly been re-implemented in my communitybot plugin.
+Please use that instead, and submit new features as required.
+
+[Communitybot](https://github.com/williamkray/maubot-communitybot)
 
 ## Configuration
 * The [base config](base-config.yaml) contains all requird configuration.
